@@ -17,7 +17,7 @@ public interface ItemDao {
     LiveData<List<Item>> getAll();
 
     @Update
-    public void updateItems(Item... items);
+    void updateItems(Item... items);
 
     @Insert
     void insert(Item... items);
