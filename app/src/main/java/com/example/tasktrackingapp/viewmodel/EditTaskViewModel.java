@@ -5,7 +5,6 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.tasktrackingapp.models.Item;
 import com.example.tasktrackingapp.repository.TaskTrackingRepository;
@@ -29,7 +28,11 @@ public class EditTaskViewModel extends AndroidViewModel {
         repository.insert(item);
     }
 
-    public void update(Item item) {
+    public void update(String title, String des, int id) {
+        Item item = new Item();
+        item.description = des;
+        item.title = title;
+        item.uid = id;
         repository.update(item);
     }
 }

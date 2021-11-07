@@ -25,12 +25,15 @@ public class TaskTrackingRepository {
     public void insert(Item item) {
         new InsertItemAsyncTask(itemDao).execute(item);
     }
+
     public void update(Item item) {
         new UpdateItemAsyncTask(itemDao).execute(item);
     }
+
     public void delete(Item item) {
         new DeleteItemAsyncTask(itemDao).execute(item);
     }
+
     public LiveData<List<Item>> getAllItems() {
         return allItems;
     }
@@ -47,6 +50,7 @@ public class TaskTrackingRepository {
             return null;
         }
     }
+
     private static class UpdateItemAsyncTask extends AsyncTask<Item, Void, Void> {
         private final ItemDao itemDao;
         private UpdateItemAsyncTask(ItemDao itemDao) {
@@ -58,6 +62,7 @@ public class TaskTrackingRepository {
             return null;
         }
     }
+
     private static class DeleteItemAsyncTask extends AsyncTask<Item, Void, Void> {
         private final ItemDao itemDao;
         private DeleteItemAsyncTask(ItemDao itemDao) {

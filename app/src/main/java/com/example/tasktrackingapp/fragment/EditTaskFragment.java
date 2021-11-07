@@ -25,23 +25,25 @@ public class EditTaskFragment extends Fragment {
     private EditTaskFragmentBinding binding;
 
     @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mViewModel = new ViewModelProvider(this).get(EditTaskViewModel.class);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = EditTaskFragmentBinding.inflate(inflater, container, false);
+        if (getArguments() != null) {
+            binding.descriptionInput.setText(getArguments().getString("des"));
+            binding.titleInput.setText(getArguments().getString("title"));
+        }
+
         binding.confirmButton.setOnClickListener(v -> {
-
-            Editable des = binding.descriptionInput.getText();
-            Editable title = binding.titleInput.getText();
-
-            if (title != null && !title.toString().equals("")) {
-                if (des == null) {
-                    mViewModel.insert(title.toString(), "");
-                } else {
-                    mViewModel.insert(title.toString(), des.toString());
-                }
+            if (getArguments() != null) {
+                updateTask(getArguments().getInt("id"));
             } else {
-                Toast.makeText(getActivity(),"Please input task title",Toast.LENGTH_SHORT).show();
-                return;
+                saveTask();
             }
 
             NavController nav = NavHostFragment.findNavController(this);
@@ -50,11 +52,26 @@ public class EditTaskFragment extends Fragment {
         return binding.getRoot();
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(EditTaskViewModel.class);
-        // TODO: Use the ViewModel
+    private void saveTask() {
+        Editable des = binding.descriptionInput.getText();
+        Editable title = binding.titleInput.getText();
+
+        if (title != null && !title.toString().equals("")) {
+            if (des == null) {
+                mViewModel.insert(title.toString(), "");
+            } else {
+                mViewModel.insert(title.toString(), des.toString());
+            }
+        } else {
+            Toast.makeText(getActivity(),"Please input task title",Toast.LENGTH_SHORT).show();
+            return;
+        }
     }
 
+    private void updateTask(int id) {
+        Editable des = binding.descriptionInput.getText();
+        Editable title = binding.titleInput.getText();
+        mViewModel.update(title.toString(), des.toString(), id);
+    }
 }
+
