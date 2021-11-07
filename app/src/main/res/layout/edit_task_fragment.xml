@@ -15,15 +15,16 @@
             android:id="@+id/title_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop = "100dp"
             android:gravity="center"
-            android:textSize="30dp"
-            android:text="Create new task " />
+            android:text="Create new task "
+            android:textSize="30dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop = "20dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/title_input"
@@ -36,7 +37,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/description_input"
@@ -50,6 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginTop="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:text="Confirm" />
 
     </LinearLayout>

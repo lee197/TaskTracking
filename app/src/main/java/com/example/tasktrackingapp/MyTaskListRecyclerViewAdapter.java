@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -13,10 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-
-
 public class MyTaskListRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskListRecyclerViewAdapter.ViewHolder> {
-
     private List<Item> mValues;
     private final OnItemClickListener itemListener;
     private final OnSwitchClickListener switchListener;
@@ -81,6 +79,8 @@ public class MyTaskListRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskLi
         public final TextView mTitleView;
         public final TextView mDesView;
         public final Switch mStateSwitch;
+        public final ImageView mDeleteView;
+
         public Item mItem;
 
         public ViewHolder(FragmentItemBinding binding) {
@@ -89,11 +89,13 @@ public class MyTaskListRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskLi
             mTitleView = binding.taskTitle;
             mDesView = binding.taskDes;
             mStateSwitch = binding.statusSwitch;
+            mDeleteView = binding.deleteView;
         }
 
         public void bind(final Item item, final OnItemClickListener listener) {
             mTitleView.setOnClickListener(v -> listener.onItemClick(item));
             mDesView.setOnClickListener(v -> listener.onItemClick(item));
+            mIdView.setOnClickListener(v -> listener.onItemClick(item));
         }
 
         public void bind(final Item item, final OnSwitchClickListener listener) {
@@ -108,7 +110,7 @@ public class MyTaskListRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskLi
         }
 
         public void bind(final Item item, final OnDeleteListener listener) {
-            mIdView.setOnClickListener(v -> listener.onCellDeleted(item));
+            mDeleteView.setOnClickListener(v -> listener.onCellDeleted(item));
         }
 
         @Override

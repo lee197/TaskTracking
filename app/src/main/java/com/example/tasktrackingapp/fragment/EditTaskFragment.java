@@ -64,7 +64,6 @@ public class EditTaskFragment extends Fragment {
             }
         } else {
             Toast.makeText(getActivity(),"Please input task title",Toast.LENGTH_SHORT).show();
-            return;
         }
     }
 

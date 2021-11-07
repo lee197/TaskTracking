@@ -4,6 +4,7 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -14,6 +15,8 @@ import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.example.tasktrackingapp.fragment.TaskListFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -46,5 +49,10 @@ public class MainActivity extends AppCompatActivity {
             mNavigationController.navigate(R.id.action_taskListFragment_to_editTaskFragment);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public Fragment getForegroundFragment(){
+        Fragment navHostFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        return navHostFragment == null ? null : navHostFragment.getChildFragmentManager().getFragments().get(0);
     }
 }

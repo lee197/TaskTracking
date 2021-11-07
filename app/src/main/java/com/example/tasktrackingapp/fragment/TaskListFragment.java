@@ -52,7 +52,7 @@ public class TaskListFragment extends Fragment {
             mTaskTrackingViewModel.update(item);
 
         }, item -> {
-
+            mTaskTrackingViewModel.delete(item);
         });
 
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
