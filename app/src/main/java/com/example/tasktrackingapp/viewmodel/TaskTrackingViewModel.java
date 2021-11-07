@@ -24,7 +24,7 @@ public class TaskTrackingViewModel extends AndroidViewModel {
     public void delete(Item item) {
         repository.insert(item);
     }
-
+    public void update(Item item) { repository.update(item); }
     public LiveData<List<Item>> getAllItems() {
         return getAllItems;
     }

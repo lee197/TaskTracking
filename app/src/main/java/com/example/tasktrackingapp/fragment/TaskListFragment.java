@@ -48,6 +48,11 @@ public class TaskListFragment extends Fragment {
 
             NavController nav = NavHostFragment.findNavController(this);
             nav.navigate(R.id.action_taskListFragment_to_editTaskFragment, bundle);
+        }, item -> {
+            mTaskTrackingViewModel.update(item);
+
+        }, item -> {
+
         });
 
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
