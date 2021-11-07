@@ -1,14 +1,12 @@
 package com.example.tasktrackingapp;
 
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.example.tasktrackingapp.placeholder.PlaceholderContent.PlaceholderItem;
 import com.example.tasktrackingapp.databinding.FragmentItemBinding;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -25,10 +23,8 @@ public class MyTaskListRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskLi
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
+    public @NotNull ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         return new ViewHolder(FragmentItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
-
     }
 
     @Override
@@ -43,7 +39,7 @@ public class MyTaskListRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskLi
         return mValues.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mIdView;
         public final TextView mContentView;
         public PlaceholderItem mItem;
@@ -51,7 +47,7 @@ public class MyTaskListRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskLi
         public ViewHolder(FragmentItemBinding binding) {
             super(binding.getRoot());
             mIdView = binding.itemNumber;
-            mContentView = binding.content;
+            mContentView = binding.taskTitle;
         }
 
         @Override

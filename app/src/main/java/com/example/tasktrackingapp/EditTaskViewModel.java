@@ -1,31 +1,36 @@
-package com.example.tasktrackingapp.viewmodel;
+package com.example.tasktrackingapp;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.example.tasktrackingapp.models.Item;
 import com.example.tasktrackingapp.repository.TaskTrackingRepository;
 
 import java.util.List;
 
-public class TaskTrackingViewModel extends AndroidViewModel {
+public class EditTaskViewModel extends AndroidViewModel {
     private final TaskTrackingRepository repository;
     public LiveData<List<Item>> getAllItems;
 
-    public TaskTrackingViewModel(@NonNull @org.jetbrains.annotations.NotNull Application application) {
+    public EditTaskViewModel(@NonNull @org.jetbrains.annotations.NotNull Application application) {
         super(application);
         repository = new TaskTrackingRepository(application);
         getAllItems = repository.getAllItems();
     }
 
-    public void delete(Item item) {
+    public void insert(String title, String des) {
+        Item item = new Item();
+        item.description = des;
+        item.title = title;
         repository.insert(item);
     }
 
-    public LiveData<List<Item>> getAllItems() {
-        return getAllItems;
+    public void update(Item item) {
+        repository.update(item);
     }
 }
+

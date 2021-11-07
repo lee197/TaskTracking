@@ -7,7 +7,16 @@
 
     <fragment
         android:id="@+id/taskListFragment"
-        android:name="com.example.tasktrackingapp.TaskListFragment"
+        android:name="com.example.tasktrackingapp.fragment.TaskListFragment"
         android:label="fragment_item_list"
-        tools:layout="@layout/fragment_item_list" />
+        tools:layout="@layout/fragment_item_list" >
+        <action
+            android:id="@+id/action_taskListFragment_to_editTaskFragment"
+            app:destination="@id/editTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editTaskFragment"
+        android:name="com.example.tasktrackingapp.EditTaskFragment"
+        android:label="edit_task_fragment"
+        tools:layout="@layout/edit_task_fragment" />
 </navigation>
