@@ -13,7 +13,7 @@ import java.util.List;
 
 public class TaskTrackingViewModel extends AndroidViewModel {
     private final TaskTrackingRepository repository;
-    public LiveData<List<Item>> getAllItems;
+    private final LiveData<List<Item>> getAllItems;
 
     public TaskTrackingViewModel(@NonNull @org.jetbrains.annotations.NotNull Application application) {
         super(application);

@@ -4,22 +4,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.example.tasktrackingapp.placeholder.PlaceholderContent.PlaceholderItem;
+
+import com.example.tasktrackingapp.models.Item;
 import com.example.tasktrackingapp.databinding.FragmentItemBinding;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class MyTaskListRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskListRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PlaceholderItem> mValues;
+    private List<Item> mValues;
 
-    public MyTaskListRecyclerViewAdapter(List<PlaceholderItem> items) {
-        mValues = items;
+    public void setItemList(List<Item> list) {
+        this.mValues = list;
     }
 
     @Override
@@ -30,8 +27,9 @@ public class MyTaskListRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskLi
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(String.valueOf(mValues.get(position).uid));
+        holder.mTitleView.setText(mValues.get(position).title);
+        holder.mDesView.setText(mValues.get(position).description);
     }
 
     @Override
@@ -41,18 +39,21 @@ public class MyTaskListRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskLi
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mIdView;
-        public final TextView mContentView;
-        public PlaceholderItem mItem;
+        public final TextView mTitleView;
+        public final TextView mDesView;
+
+        public Item mItem;
 
         public ViewHolder(FragmentItemBinding binding) {
             super(binding.getRoot());
             mIdView = binding.itemNumber;
-            mContentView = binding.taskTitle;
+            mTitleView = binding.taskTitle;
+            mDesView = binding.taskDes;
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mTitleView.getText() + "'";
         }
     }
 }

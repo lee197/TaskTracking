@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/editTaskFragment"
-        android:name="com.example.tasktrackingapp.EditTaskFragment"
+        android:name="com.example.tasktrackingapp.fragment.EditTaskFragment"
         android:label="edit_task_fragment"
         tools:layout="@layout/edit_task_fragment" />
 </navigation>

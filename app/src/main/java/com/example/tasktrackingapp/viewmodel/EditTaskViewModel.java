@@ -1,4 +1,4 @@
-package com.example.tasktrackingapp;
+package com.example.tasktrackingapp.viewmodel;
 
 import android.app.Application;
 
